@@ -1,5 +1,5 @@
 /*!
- * LegoTable v1.0.0 RC2
+ * LegoTable v1.0.0
  * Copyright 2015 Samer Abu Rabie (@SamerX) 
  * Licensed under MIT
  */
