@@ -1,5 +1,5 @@
 /*!
- * LegoTable v1.0.0
+ * LegoTable v1.0.1
  * Copyright 2015 Samer Abu Rabie (@SamerX) 
  * Licensed under MIT
  */
@@ -264,7 +264,7 @@
                 BuildTable($this, settings, rows, columns);
 
                 //Build Pagination
-                BuildPagination($this, settings, result.TotalRecords, columns.length);
+                BuildPagination($this, settings, result.TotalRecords);
 
                 //Call on complete
                 if (settings.OnComplete != null) {
@@ -299,10 +299,10 @@
                 }
                 else {
                     tr.append(_htmlRow);
-                }
-                if (settings.OnPostRowDataBinding != null) {
-                    settings.OnPostRowDataBinding(rowIndex, row, tr);
-                }
+                }                
+            }
+            if (settings.OnPostRowDataBinding != null) {
+                settings.OnPostRowDataBinding(rowIndex, row, tr);
             }
             tbody.append(tr);
         });
@@ -337,17 +337,16 @@
                 }
                 else {
                     tr.append(td.append(_htmlCell));
-                }
-
-                if (settings.OnPostCellDataBinding != null) {
-                    settings.OnPostCellDataBinding(rowIndex, row, columnIndex, fieldName, td);
-                }
+                }                
+            }
+            if (settings.OnPostCellDataBinding != null) {
+                settings.OnPostCellDataBinding(rowIndex, row, columnIndex, fieldName, td);
             }
         });
         return tr;
     }
 
-    function BuildPagination($this, settings, totalRecords, numberOfColumns) {
+    function BuildPagination($this, settings, totalRecords) {
         //Skip pagination if pager doesn't exist
         if ($(settings.PagerJquerySelector).length == 0) {
             return;
